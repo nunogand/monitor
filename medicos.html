@@ -1,0 +1,106 @@
+---
+layout: default
+---
+
+
+
+<div>
+<canvas id="myChart" class="grafico"></canvas>
+</div>
+
+
+<script>
+Chart.defaults.font.size = 14;
+
+    const labels = [
+    '{{ site.data.medicos[0].nome }}',
+    '{{ site.data.medicos[1].nome }}',
+    '{{ site.data.medicos[2].nome }}',
+    '{{ site.data.medicos[3].nome }}',
+    ];
+    
+    
+    
+    
+    const data = {
+    labels: labels,
+    datasets: [{
+    label: '1ª vaga',
+    backgroundColor: 'rgb(247, 127, 0)',
+    borderColor: 'rgb(247, 127, 0)',
+    data: [{{ site.data.medicos[0].vaga1 }},
+    {{ site.data.medicos[1].vaga1 }},
+    {{ site.data.medicos[2].vaga1 }},
+    {{ site.data.medicos[3].vaga1 }}],
+
+
+    },
+    {
+    label: '2ª vaga',
+    backgroundColor: 'rgb(252, 191, 73)',
+    borderColor: 'rgb(252, 191, 73)',
+    data: [{{ site.data.medicos[0].vaga2 }},
+    {{ site.data.medicos[1].vaga2 }},
+    {{ site.data.medicos[2].vaga2 }},
+    {{ site.data.medicos[3].vaga2 }}],
+    }
+    ]
+    };
+    
+    
+    const config = {
+    type: 'bar',
+    data: data,
+    options: {
+    devicePixelRatio: 2,
+    
+    
+    indexAxis: 'y',
+    // Elements options apply to all of the options unless overridden in a dataset
+    // In this case, we are setting the border of each horizontal bar to be 2px wide
+    elements: {
+    bar: {
+    borderWidth: 2,
+    }
+    },
+    responsive: true,
+    plugins: {
+
+
+
+            legend: {
+                position: 'top',
+            },
+
+
+            title: {
+                display: true,
+                text: 'Tempo de espera para agendamento',
+                font: {
+                    size: 24
+                },
+            },
+            subtitle: {
+                display: true,
+                text: 'Consulta Médica',
+                font: {
+                    size: 16
+                },
+            }
+
+
+
+
+    }
+    },
+    };
+    
+    </script>
+    
+    
+<script>
+    const myChart = new Chart(
+    document.getElementById('myChart'),
+    config
+    );
+</script>
