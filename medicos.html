@@ -50,7 +50,19 @@ Chart.defaults.font.size = 14;
     data: data,
     options: {
     devicePixelRatio: 2,
-    
+    scales: {
+      x: {
+        title: {
+          display: true,
+          text: 'Profissional'
+        }
+      },
+      y: {
+        title: {
+          display: true,
+          text: 'Dias'
+        }
+    }},
     
     //indexAxis: 'y',
     // Elements options apply to all of the options unless overridden in a dataset
